@@ -1,0 +1,14 @@
+/dist
+/tmp
+
+/node_modules
+npm-debug.log
+yarn-error.log
+
+.idea/
+.project
+
+.vscode/
+
+
+/.angular/cache

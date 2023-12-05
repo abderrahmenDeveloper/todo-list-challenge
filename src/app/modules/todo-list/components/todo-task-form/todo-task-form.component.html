@@ -1,0 +1,24 @@
+<form [formGroup]="taskForm" (submit)="submit()">
+  <h1 mat-dialog-title>{{data.title}}</h1>
+  <div mat-dialog-content>
+    <mat-form-field color="accent" class="input-full-width">
+      <input matInput formControlName="username" placeholder="username" />
+      <mat-error *ngIf="taskForm.get('username')?.hasError('required')"
+        >Username cannot be empty</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field color="accent" class="input-full-width">
+      <textarea
+        matInput
+        formControlName="todoText"
+        placeholder="text"></textarea>
+      <mat-error *ngIf="taskForm.get('todoText')?.hasError('required')"
+        >Text cannot be empty</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" mat-dialog-close>Back</button>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </div>
+</form>
