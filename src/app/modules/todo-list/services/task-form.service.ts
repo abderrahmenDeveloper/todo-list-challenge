@@ -8,10 +8,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class TaskFormService {
-  private createdTaskSubject = new BehaviorSubject<any>(null);
+  private createdTaskSubject = new BehaviorSubject<{ username: string; todoText: string } | null>(null);
   createdTask$ = this.createdTaskSubject.asObservable();
 
-  private updatedTaskSubject = new BehaviorSubject<any>(null);
+  private updatedTaskSubject = new BehaviorSubject<{ id: string; username: string; todoText: string } | null>(null);
   updatedTask$ = this.updatedTaskSubject.asObservable();
 
   constructor(private dialog: MatDialog) {}

@@ -12,10 +12,7 @@ import {
   MatDialogTitle
 } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-import {
-  MatSnackBarLabel,
-  MatSnackBarModule
-} from '@angular/material/snack-bar';
+import { MatSnackBarLabel, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],

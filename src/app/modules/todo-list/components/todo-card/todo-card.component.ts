@@ -13,8 +13,8 @@ import { MethodType } from '@app/shared/enum/method-type';
 export class TodoCardComponent {
   private dialogRef!: MatDialogRef<DialogComponent>;
   @Input({ required: true }) task!: Task;
-  @Output() deleteTaskBis: EventEmitter<string> = new EventEmitter();
-  @Output() updateTaskStatusBis: EventEmitter<Task> = new EventEmitter();
+  @Output() deleteTaskEvent: EventEmitter<string> = new EventEmitter();
+  @Output() updateTaskStatusEvent: EventEmitter<Task> = new EventEmitter();
 
   constructor(
     public dialog: MatDialog,
@@ -22,18 +22,14 @@ export class TodoCardComponent {
   ) {}
 
   public updateTaskStatus(): void {
-    this.updateTaskStatusBis.next(this.task);
+    this.updateTaskStatusEvent.next(this.task);
   }
 
   public openTaskFormDialog(): void {
-    this.taskFormService.openTaskFormDialog(
-      'Edit Task',
-      MethodType.UPDATE,
-      this.task
-    );
+    this.taskFormService.openTaskFormDialog('Edit Task', MethodType.UPDATE, this.task);
   }
 
-  public confirmDelete(): void {
+  public confirmDeletion(): void {
     this.dialogRef = this.dialog.open(DialogComponent, {
       width: '330px',
       height: '200px',
@@ -47,12 +43,8 @@ export class TodoCardComponent {
       }
     });
 
-    this.dialogRef.afterClosed().subscribe((btnKey: any) => {
-      if (btnKey === 'confirm') {
-        this.deleteTaskBis.next(this.task.id);
-      } else {
-        this.dialog.closeAll();
-      }
+    this.dialogRef.afterClosed().subscribe((clickedKey: string) => {
+      clickedKey === 'confirm' ? this.deleteTaskEvent.next(this.task.id) : this.dialog.closeAll();
     });
   }
 }

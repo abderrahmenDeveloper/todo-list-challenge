@@ -14,11 +14,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    TodoListContainerComponent,
-    TodoCardComponent,
-    ToDoTaskFormComponent
-  ],
+  declarations: [TodoListContainerComponent, TodoCardComponent, ToDoTaskFormComponent],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)]
 })
 export class TodoListModule {}

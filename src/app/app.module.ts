@@ -10,13 +10,7 @@ import { HttpErrorInteceptor } from './shared/interceptors/http-error.intercepto
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    TodoListModule,
-    SharedModule
-  ],
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, TodoListModule, SharedModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

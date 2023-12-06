@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TodoListContainerComponent } from './todo-list-container.component';
-import { MaterialModule } from '../../../../shared/modules/material.module';
+import { MaterialModule } from '@app/shared/modules/material.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CommonModule, DatePipe } from '@angular/common';
-import { TodoListService } from '../../services/todo-list.service';
+import { TodoListService } from '@app/modules/todo-list/services/todo-list.service';
 import { of } from 'rxjs';
-import { TaskFormService } from '../../services/task-form.service';
-import { MethodType } from '../../../../shared/enum/method-type';
+import { TaskFormService } from '@app/modules/todo-list/services/task-form.service';
+import { MethodType } from '@app/shared/enum/method-type';
 
 describe('TodoListContainerComponent', () => {
   let component: TodoListContainerComponent;
@@ -15,12 +15,8 @@ describe('TodoListContainerComponent', () => {
   let taskFormService: jasmine.SpyObj<TaskFormService>;
 
   beforeEach(async () => {
-    const todoListServiceSpy = jasmine.createSpyObj('TodoListService', [
-      'fetchTasks'
-    ]);
-    const taskFormServiceSpy = jasmine.createSpyObj('TaskFormService', [
-      'openTaskFormDialog'
-    ]);
+    const todoListServiceSpy = jasmine.createSpyObj('TodoListService', ['fetchTasks']);
+    const taskFormServiceSpy = jasmine.createSpyObj('TaskFormService', ['openTaskFormDialog']);
     await TestBed.configureTestingModule({
       declarations: [TodoListContainerComponent],
       imports: [HttpClientTestingModule, MaterialModule, CommonModule],
@@ -33,12 +29,8 @@ describe('TodoListContainerComponent', () => {
 
     fixture = TestBed.createComponent(TodoListContainerComponent);
     component = fixture.componentInstance;
-    todoListService = TestBed.inject(
-      TodoListService
-    ) as jasmine.SpyObj<TodoListService>;
-    taskFormService = TestBed.inject(
-      TaskFormService
-    ) as jasmine.SpyObj<TaskFormService>;
+    todoListService = TestBed.inject(TodoListService) as jasmine.SpyObj<TodoListService>;
+    taskFormService = TestBed.inject(TaskFormService) as jasmine.SpyObj<TaskFormService>;
     fixture.detectChanges();
   });
 
@@ -77,9 +69,6 @@ describe('TodoListContainerComponent', () => {
 
   it('should open task form dialog when method is called', () => {
     component.openTaskFormDialog();
-    expect(taskFormService.openTaskFormDialog).toHaveBeenCalledWith(
-      'Create New Task',
-      MethodType.CREATE
-    );
+    expect(taskFormService.openTaskFormDialog).toHaveBeenCalledWith('Create New Task', MethodType.CREATE);
   });
 });

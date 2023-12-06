@@ -1,19 +1,10 @@
 <h1 mat-dialog-title>Dialog with elements</h1>
 <div mat-dialog-content>{{data.content}}</div>
 <div mat-dialog-actions align="center">
-  <button
-    *ngIf="data.buttons.close"
-    mat-raised-button
-    mat-button
-    mat-dialog-close
-    (click)="dialogRef.close('close')">
+  <button *ngIf="data.buttons.close" mat-raised-button mat-button mat-dialog-close (click)="dialogRef.close('close')">
     {{data.buttons.close}}
   </button>
-  <button
-    *ngIf="data.buttons.action"
-    mat-raised-button
-    mat-button
-    (click)="dialogRef.close('confirm')">
+  <button *ngIf="data.buttons.action" mat-raised-button mat-button (click)="dialogRef.close('confirm')">
     {{data.buttons.action}}
   </button>
 </div>

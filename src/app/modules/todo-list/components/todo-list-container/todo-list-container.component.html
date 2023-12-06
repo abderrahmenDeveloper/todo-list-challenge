@@ -1,12 +1,10 @@
 <div class="header">
-  <button mat-raised-button color="primary" (click)="openTaskFormDialog()">
-    Create New Task
-  </button>
+  <button mat-raised-button color="primary" (click)="openTaskFormDialog()">Create New Task</button>
   <span class="header__date">{{todayDate}}</span>
 </div>
 <ng-container *ngFor="let task of tasks">
   <app-todo-card
     [task]="task"
-    (deleteTaskBis)="deleteTask($event)"
-    (updateTaskStatusBis)="updateTaskStatus($event)"></app-todo-card>
+    (deleteTaskEvent)="deleteTask($event)"
+    (updateTaskStatusEvent)="updateTaskStatus($event)"></app-todo-card>
 </ng-container>

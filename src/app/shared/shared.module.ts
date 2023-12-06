@@ -8,12 +8,7 @@ import { NotificationComponent } from '@app/shared/components/notification/notif
 
 @NgModule({
   declarations: [DialogComponent, NotificationComponent],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
+  imports: [CommonModule, MaterialModule, HttpClientModule, ReactiveFormsModule],
   exports: [MaterialModule, HttpClientModule, ReactiveFormsModule],
   providers: [DatePipe]
 })

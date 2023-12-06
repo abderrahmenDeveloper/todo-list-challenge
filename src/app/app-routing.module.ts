@@ -4,10 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () =>
-      import('./modules/todo-list/todo-list.module').then(
-        (m) => m.TodoListModule
-      )
+    loadChildren: () => import('./modules/todo-list/todo-list.module').then((m) => m.TodoListModule)
   }
 ];
 

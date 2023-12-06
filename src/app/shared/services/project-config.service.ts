@@ -11,7 +11,7 @@ export class ProjectConfigService {
     this.projectConfig = config;
   }
 
-  getProjectConfig(): any {
+  getProjectConfig(): Config {
     return this.projectConfig;
   }
 }

@@ -14,7 +14,7 @@ import { take } from 'rxjs';
 })
 export class TodoListContainerComponent implements OnInit {
   tasks: Task[] = [];
-  todayDate: string | null | undefined;
+  todayDate!: string;
 
   constructor(
     private todoListService: TodoListService,
@@ -24,7 +24,7 @@ export class TodoListContainerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.todayDate = this.datePipe.transform(new Date(), 'fullDate');
+    this.todayDate = this.datePipe.transform(new Date(), 'fullDate') ?? '';
 
     // subscribe to GET and Retrieve initial list of tasks
     this.todoListService
@@ -53,9 +53,7 @@ export class TodoListContainerComponent implements OnInit {
       .pipe(take(1))
       .subscribe({
         next: (response) => {
-          this.tasks = this.tasks.filter(
-            (task: Task) => task.id !== response.id
-          );
+          this.tasks = this.tasks.filter((task: Task) => task.id !== response.id);
           this.notificationService.showSuccessNotification(MethodType.DELETE);
         }
       });
@@ -104,9 +102,6 @@ export class TodoListContainerComponent implements OnInit {
   }
 
   public openTaskFormDialog(): void {
-    this.taskFormService.openTaskFormDialog(
-      'Create New Task',
-      MethodType.CREATE
-    );
+    this.taskFormService.openTaskFormDialog('Create New Task', MethodType.CREATE);
   }
 }
